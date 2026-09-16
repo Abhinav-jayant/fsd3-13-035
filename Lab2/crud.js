@@ -1,6 +1,5 @@
 import readline from "readline/promises";
 import { writeFile, readFile } from "fs/promises";
-
 import { stdin, stdout } from "process";
 
 const FILE = "products.json";
@@ -10,14 +9,38 @@ const saveCart = async (cart) => {
 };
 
 const getCart = async () => {
-  const data = await readFile(FILE, "utf-8");
-  return JSON.parse(data);
+  try {
+    const data = await readFile(FILE, "utf-8");
+    return JSON.parse(data);
+  } catch (error) {
+    return [];
+  }
 };
 
 const addToCart = async (item) => {
   const products = await getCart();
-  products.push(item);
+      const productFound=product.find((p)=>p.id === item.id);
+      if(productFound){
+        productFound.qty += item.qty;
+        console.log("Product in cart quantity updated")
+      }else{
+        products.push(item);
+        console.log("Product added successfully ")
+      }
+
   await saveCart(products);
+};
+
+const showCart = () => {
+  console.log("show cart");
+};
+
+const deleteFromCart = () => {
+  console.log("deleteCart");
+};
+
+const updateCart = () => {
+  console.log("update cart");
 };
 
 const main = async () => {
@@ -30,29 +53,51 @@ const main = async () => {
     console.log("3 ------- Remove Item");
     console.log("4 ------- Update Quantity");
     console.log("5 ------- Checkout");
-    choice = await cin.question("Enter your choice:");
+    choice = await cin.question("Enter your choice: ");
+    
     switch (Number(choice)) {
-      case 1:
-        await addToCart({ id: 101, name: "Mobile", price: 15000, qty: 3 });
-        console.log("add to cart");
+      case 1: {
+        let data = await cin.question("enter id,name,price,qty: ");
+        console.log(data);
+
+        let p = data.split(",");
+        console.table(p);
+        let q = p.map((item) => item.trim());
+        console.table(q);
+
+        let [id, name, price, qty] = q;
+        console.log(id, name, price, qty);
+
+        const product = {
+          id: Number(id),
+          name: name,
+          price: Number(price),
+          qty: Number(qty),
+        };
+
+        await addToCart(product);
+        console.log("Product added successfully! ✅");
         break;
+      }
       case 2:
+        showCart();
         console.log("show cart items");
         break;
       case 3:
+        deleteFromCart();
         console.log("remove items");
         break;
       case 4:
+        updateCart();
         console.log("update quantity");
         break;
       case 5:
         console.log("See you later...😃");
-        process.exit();
         break;
       default:
         console.log("Invalid choice! try again 🛑");
     }
-  } while (choice != "5");
+  } while (choice !== "5");
 
   cin.close();
 };

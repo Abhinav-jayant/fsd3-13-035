@@ -25,7 +25,7 @@ Directory mangement
   -link()
   -syslink()
 
-   ## CURD
+   ## CRUD
 
 create/Insert,Read/REtrieve,update,Delete
 

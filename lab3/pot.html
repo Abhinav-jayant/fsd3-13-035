@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matka - Pure Earthen Water</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff8ef;
+            color: #3d2418;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #a64b20;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #3d2418;
+            margin-left: 30px;
+            font-weight: bold;
+        }
+
+        .hero {
+            min-height: 650px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 10%;
+            background: linear-gradient(135deg, #fff1df, #fffaf4);
+        }
+
+        .hero-text {
+            max-width: 560px;
+        }
+
+        .hero-text small {
+            color: #b45c28;
+            font-size: 16px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+
+        .hero-text h1 {
+            font-size: 60px;
+            line-height: 1.1;
+            margin: 20px 0;
+        }
+
+        .hero-text h1 span {
+            color: #a64b20;
+        }
+
+        .hero-text p {
+            font-size: 19px;
+            line-height: 1.7;
+            color: #705446;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            background: #a64b20;
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #783515;
+            transform: translateY(-2px);
+        }
+
+        .pot-area {
+            width: 400px;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .pot {
+            width: 270px;
+            height: 330px;
+            background: linear-gradient(90deg, #8e3e1d, #c56a36, #8e3e1d);
+            border-radius: 45% 45% 38% 38%;
+            position: relative;
+            box-shadow: 20px 25px 40px rgba(80,40,15,0.25);
+        }
+
+        .pot::before {
+            content: "";
+            position: absolute;
+            width: 155px;
+            height: 45px;
+            background: #8b3b1d;
+            border-radius: 50%;
+            top: -18px;
+            left: 58px;
+        }
+
+        .pot::after {
+            content: "";
+            position: absolute;
+            width: 190px;
+            height: 25px;
+            border-radius: 50%;
+            background: #6e2d16;
+            top: -5px;
+            left: 40px;
+        }
+
+        .pot-neck {
+            position: absolute;
+            width: 150px;
+            height: 65px;
+            background: #ad552b;
+            top: -45px;
+            left: 60px;
+            border-radius: 35px 35px 10px 10px;
+        }
+
+        .design {
+            position: absolute;
+            width: 210px;
+            height: 80px;
+            border-top: 4px solid #f2b36d;
+            border-bottom: 4px solid #f2b36d;
+            top: 120px;
+            left: 30px;
+        }
+
+        .design::after {
+            content: "✦  ✦  ✦  ✦  ✦";
+            position: absolute;
+            width: 100%;
+            text-align: center;
+            top: 20px;
+            color: #ffd08d;
+            font-size: 22px;
+        }
+
+        .section {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .section h2 {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #713616;
+        }
+
+        .section > p {
+            color: #765b4c;
+            margin-bottom: 45px;
+            font-size: 17px;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(90,50,20,0.09);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .icon {
+            font-size: 45px;
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            margin-bottom: 12px;
+            color: #8d421e;
+        }
+
+        .card p {
+            color: #765b4c;
+            line-height: 1.6;
+        }
+
+        .product {
+            background: #f2dfc9;
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 80px;
+        }
+
+        .mini-pot {
+            width: 230px;
+            height: 280px;
+            background: linear-gradient(90deg, #8d3e1e, #c66b37, #8d3e1e);
+            border-radius: 45% 45% 35% 35%;
+            position: relative;
+            box-shadow: 15px 20px 30px rgba(70,35,15,0.2);
+        }
+
+        .mini-pot::before {
+            content: "";
+            position: absolute;
+            width: 130px;
+            height: 40px;
+            background: #7a3219;
+            border-radius: 50%;
+            top: -18px;
+            left: 50px;
+        }
+
+        .product-info {
+            max-width: 500px;
+        }
+
+        .product-info h2 {
+            font-size: 42px;
+            margin-bottom: 15px;
+        }
+
+        .product-info p {
+            color: #684b3d;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+
+        .price {
+            font-size: 42px;
+            font-weight: bold;
+            color: #9b421b;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            background: #3b2116;
+            color: #fff;
+            text-align: center;
+            padding: 35px;
+        }
+
+        footer h3 {
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 800px) {
+            nav {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 43px;
+            }
+
+            .pot-area {
+                transform: scale(0.8);
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .product {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">🏺 MATKA</div>
+
+        <nav>
+            <a href="#about">About</a>
+            <a href="#benefits">Benefits</a>
+            <a href="#shop">Shop</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-text">
+            <small>PURE • NATURAL • INDIAN</small>
+
+            <h1>
+                Thanda Paani,<br>
+                <span>Desi Andaaz.</span>
+            </h1>
+
+            <p>
+                Bring home the timeless Indian ghada.
+                Naturally cool your drinking water while
+                keeping alive the beauty of traditional
+                Indian pottery.
+            </p>
+
+            <a href="#shop" class="btn">Shop Matka</a>
+        </div>
+
+        <div class="pot-area">
+            <div class="pot">
+                <div class="pot-neck"></div>
+                <div class="design"></div>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="section" id="about">
+
+        <h2>Why Choose Matka?</h2>
+
+        <p>
+            A simple tradition that makes every sip special.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">💧</div>
+                <h3>Naturally Cool</h3>
+                <p>
+                    The porous clay naturally cools water
+                    through evaporation.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🌱</div>
+                <h3>Eco Friendly</h3>
+                <p>
+                    Made from natural clay and designed
+                    with the environment in mind.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">🏺</div>
+                <h3>Handcrafted</h3>
+                <p>
+                    Every ghada carries the character and
+                    craftsmanship of traditional pottery.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="section" id="benefits">
+
+        <h2>Back to the Roots</h2>
+
+        <p>
+            Traditional Indian wisdom in a beautiful,
+            everyday essential.
+        </p>
+
+        <div class="cards">
+
+            <div class="card">
+                <div class="icon">❄️</div>
+                <h3>Cool Water</h3>
+                <p>
+                    Enjoy naturally cool water without
+                    depending on electricity.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">❤️</div>
+                <h3>Timeless Tradition</h3>
+                <p>
+                    Experience the traditional way of
+                    storing drinking water.
+                </p>
+            </div>
+
+            <div class="card">
+                <div class="icon">✨</div>
+                <h3>Beautiful Design</h3>
+                <p>
+                    Add a warm, earthy Indian touch to
+                    your kitchen and home.
+                </p>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="product" id="shop">
+
+        <div class="mini-pot"></div>
+
+        <div class="product-info">
+
+            <h2>Classic Indian Ghada</h2>
+
+            <p>
+                Handmade earthen pot made for storing
+                and naturally cooling drinking water.
+                Simple, sustainable and rooted in Indian
+                tradition.
+            </p>
+
+            <div class="price">₹799</div>
+
+            <a href="#" class="btn">Buy Now</a>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <h3>🏺 MATKA</h3>
+        <p>Tradition that keeps you refreshed.</p>
+        <br>
+        <p>© 2026 Matka. Made with मिट्टी & ❤️</p>
+    </footer>
+
+</body>
+</html>

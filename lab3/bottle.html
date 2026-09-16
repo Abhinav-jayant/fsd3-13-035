@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AquaSmart - Smart Water Bottle</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #f5fbff;
+            color: #123;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 8%;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 25px;
+            font-weight: bold;
+            color: #0099cc;
+        }
+
+        nav a {
+            margin-left: 25px;
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .hero {
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 10%;
+            background: linear-gradient(135deg, #e8f9ff, #ffffff);
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-size: 55px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero-text h1 span {
+            color: #0099cc;
+        }
+
+        .hero-text p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: #555;
+            margin-bottom: 30px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            background: #0099cc;
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: bold;
+        }
+
+        .bottle {
+            width: 230px;
+            height: 480px;
+            border-radius: 55px 55px 45px 45px;
+            background: linear-gradient(90deg, #d9f6ff, #38bfe8, #d9f6ff);
+            border: 5px solid #b9eafa;
+            position: relative;
+            box-shadow: 0 25px 50px rgba(0, 150, 200, 0.25);
+        }
+
+        .cap {
+            width: 140px;
+            height: 55px;
+            background: #222;
+            border-radius: 20px 20px 8px 8px;
+            position: absolute;
+            top: -45px;
+            left: 40px;
+        }
+
+        .screen {
+            position: absolute;
+            top: 150px;
+            left: 35px;
+            width: 160px;
+            height: 100px;
+            background: #102c35;
+            border-radius: 15px;
+            color: #5ee7ff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+
+        .screen strong {
+            font-size: 28px;
+        }
+
+        .features {
+            padding: 80px 8%;
+            text-align: center;
+        }
+
+        .features h2,
+        .specs h2,
+        .pricing h2 {
+            font-size: 38px;
+            margin-bottom: 45px;
+        }
+
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .feature {
+            background: white;
+            padding: 35px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+        }
+
+        .feature .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .feature h3 {
+            margin-bottom: 12px;
+        }
+
+        .feature p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .specs {
+            padding: 80px 10%;
+            background: #e8f9ff;
+            text-align: center;
+        }
+
+        .spec-table {
+            max-width: 700px;
+            margin: auto;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+        }
+
+        .spec-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 18px 25px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .spec-row:last-child {
+            border-bottom: none;
+        }
+
+        .pricing {
+            text-align: center;
+            padding: 80px 10%;
+        }
+
+        .price-card {
+            max-width: 400px;
+            margin: auto;
+            padding: 40px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 35px rgba(0,0,0,0.1);
+        }
+
+        .price {
+            font-size: 48px;
+            font-weight: bold;
+            color: #0099cc;
+            margin: 20px 0;
+        }
+
+        .price-card p {
+            color: #666;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            background: #102c35;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 80px;
+            }
+
+            .hero-text h1 {
+                font-size: 40px;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <div class="logo">💧 AquaSmart</div>
+
+        <nav>
+            <a href="#features">Features</a>
+            <a href="#specs">Specifications</a>
+            <a href="#buy">Buy Now</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+
+        <div class="hero-text">
+            <h1>Stay Hydrated.<br><span>Stay Smart.</span></h1>
+
+            <p>
+                Meet AquaSmart, the intelligent water bottle that tracks
+                your hydration, reminds you to drink and keeps your water
+                at the perfect temperature.
+            </p>
+
+            <a href="#buy" class="btn">Buy Now - ₹2,999</a>
+        </div>
+
+        <div class="bottle">
+            <div class="cap"></div>
+
+            <div class="screen">
+                <strong>72%</strong>
+                <small>Hydration</small>
+            </div>
+        </div>
+
+    </section>
+
+    <section class="features" id="features">
+
+        <h2>Smart Features</h2>
+
+        <div class="feature-grid">
+
+            <div class="feature">
+                <div class="icon">💧</div>
+                <h3>Hydration Tracking</h3>
+                <p>
+                    Automatically track how much water you drink
+                    throughout the day.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">🔔</div>
+                <h3>Smart Reminders</h3>
+                <p>
+                    Get gentle reminders when it's time to drink
+                    more water.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">🌡️</div>
+                <h3>Temperature Display</h3>
+                <p>
+                    Check your water temperature instantly from
+                    the built-in display.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">📱</div>
+                <h3>Mobile App</h3>
+                <p>
+                    Connect your bottle with the AquaSmart app
+                    and monitor your hydration.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">🔋</div>
+                <h3>Long Battery</h3>
+                <p>
+                    Enjoy up to 30 days of battery life on a
+                    single charge.
+                </p>
+            </div>
+
+            <div class="feature">
+                <div class="icon">✨</div>
+                <h3>Self Cleaning</h3>
+                <p>
+                    UV-C technology helps keep your bottle
+                    fresh and clean.
+                </p>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="specs" id="specs">
+
+        <h2>Specifications</h2>
+
+        <div class="spec-table">
+
+            <div class="spec-row">
+                <strong>Capacity</strong>
+                <span>750 ml</span>
+            </div>
+
+            <div class="spec-row">
+                <strong>Material</strong>
+                <span>Stainless Steel</span>
+            </div>
+
+            <div class="spec-row">
+                <strong>Battery</strong>
+                <span>30 Days</span>
+            </div>
+
+            <div class="spec-row">
+                <strong>Connectivity</strong>
+                <span>Bluetooth 5.0</span>
+            </div>
+
+            <div class="spec-row">
+                <strong>Waterproof</strong>
+                <span>IP67</span>
+            </div>
+
+        </div>
+
+    </section>
+
+    <section class="pricing" id="buy">
+
+        <h2>Get Your AquaSmart</h2>
+
+        <div class="price-card">
+
+            <h3>AquaSmart Bottle</h3>
+
+            <div class="price">₹2,999</div>
+
+            <p>
+                Free delivery • 1 year warranty •
+                Smart hydration tracking
+            </p>
+
+            <a href="#" class="btn">Order Now</a>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>© 2026 AquaSmart. Drink smarter. Live better.</p>
+    </footer>
+
+</body>
+</html>
