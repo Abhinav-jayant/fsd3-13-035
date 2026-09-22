@@ -12,5 +12,5 @@ const findsum = (a,b) => a+b ;
 
 sayHello('Abhinav Jayant')
 console.log(`sum of 2 and 5 is ${sum(2,5)}`);
-sayHi('Abhinav')
+sayHi('Abhinav jayant')
 
